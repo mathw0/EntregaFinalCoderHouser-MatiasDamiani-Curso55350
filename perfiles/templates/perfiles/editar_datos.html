@@ -1,0 +1,23 @@
+{% extends 'statics.html' %}
+
+{% block contenido %}
+<div style="max-width: 400px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); background-color: #f9f9f9; display: flex; flex-direction: column; align-items: center;">
+    <img src="{{ user.avatar.imagen.url }}" alt="Avatar" style="max-width: 200px; border-radius: 50%; margin-bottom: 20px;">
+    <p style="font-size: 18px; margin-bottom: 20px;">Tu username es <b>{{ object.username }}</b></p>
+
+    <h3 style="font-size: 24px; margin-bottom: 20px;">Editar datos:</h3>
+    <form method="post" style="width: 100%;">
+        {% csrf_token %}
+        <label for="{{ form.first_name.id_for_label }}">Nombre:</label>
+        {{ form.first_name }}
+        <br>
+        <label for="{{ form.last_name.id_for_label }}">Apellido:</label>
+        {{ form.last_name }}
+        <br>
+        <label for="{{ form.email.id_for_label }}">Correo electrónico:</label>
+        {{ form.email }}
+        <br>
+        <input type="submit" value="Salvar" style="background-color: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease-in-out; width: 100%;">
+    </form>
+</div>
+{% endblock contenido %}

@@ -1,0 +1,61 @@
+{% extends 'statics.html' %}
+{% load static %}
+{% block contenido %}
+<div class="container">
+    <div class="row">
+        <!-- Blog entries-->
+        <div class="col-lg-8">
+            <!-- Featured blog post -->
+            <div class="widget-container">
+                <script src="https://widgets.coingecko.com/coingecko-coin-heatmap-widget.js"></script>
+                <coingecko-coin-heatmap-widget height="400" locale="es"></coingecko-coin-heatmap-widget>
+            </div>
+        </div>
+
+        <!-- Side widgets-->
+        <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-header">Buscar noticias</div>
+                    <div class="card-body">
+                        <form action="{% url 'buscar_noticias' %}" method="get">
+                            <div class="input-group">
+                                <input class="form-control" type="text" placeholder="Buscar noticias..." aria-label="Buscar noticias...." aria-describedby="button-search" name="q">
+                                <button class="btn btn-primary" id="button-search" type="submit">Buscar</button>
+                            </div>
+                        </form>
+            </div>
+            
+            <!-- Last comments widget -->
+            <div class="card mb-4">
+                <div class="card-header">Ultimos comentarios:</div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <div class="ultimos-comentarios">
+                            <ul class="list-group">
+                                {% for comentario in ultimos_comentarios %}
+                                    <li class="list-group-item">
+                                        <strong>{{ comentario.autor.username }}</strong>:<br>
+                                        {{ comentario.texto }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+{% endblock contenido %}
+</html>
+
+<style>
+    .widget-container {
+        float: right;
+    }
+
+    .ultimos-comentarios {
+        margin-top: 20px;
+    }
+</style>

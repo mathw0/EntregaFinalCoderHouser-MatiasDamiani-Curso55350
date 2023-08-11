@@ -1,0 +1,13 @@
+<div class="card mb-4">
+    <div class="card-header">Últimos Comentarios</div>
+    <div class="card-body">
+        <ul class="list-unstyled">
+            {% for comentario in comentarios %}
+                <li>
+                    <p class="small text-muted">{{ comentario.fecha|date:"F d, Y" }}</p>
+                    <p>{{ comentario.texto }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

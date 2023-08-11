@@ -1,0 +1,33 @@
+{% extends 'statics.html' %}
+{% load static %}
+{% block contenido %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-0 shadow-lg">
+                <div class="card-body p-5">
+                    <h2 class="card-title text-center mb-4">¡Únete a nuestra comunidad!</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg px-5">Registrarse</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-8 mx-auto text-center">
+            <p class="mt-2">Recuerda que al registarte aceptas los términos y condiciones.</p>
+            <p class="mt-2">Si ya tienes una cuenta, puedes inciar sesión aquí:</p>
+            <a href="{% url 'login' %}" class="btn btn-secondary btn-sm">Iniciar sesión</a>
+            <p class="mt-2"></p>
+</div>
+</div>
+
+    </div>
+</div>
+{% endblock contenido %}

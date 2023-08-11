@@ -1,0 +1,53 @@
+{% extends 'statics.html' %}
+
+{% block contenido %}
+<div class="avatar-upload-container">
+    <div class="avatar-upload-box">
+        <h3 class="text-center">Subir tu Avatar</h3>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.image.label_tag }}
+                <input type="file" class="form-control-file" name="imagen" accept="image/*" id="image-upload">
+                <img id="image-preview" src="#" alt="Previsualización" class="mt-2" style="display: none; max-width: 100%; max-height: 200px;">
+            </div>
+            <div class="text-center mt-3">
+                <input type="submit" class="btn btn-primary" value="Subir imagen">
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.getElementById('image-upload').addEventListener('change', function(e) {
+        const imagePreview = document.getElementById('image-preview');
+        const file = e.target.files[0];
+        if (file) {
+            imagePreview.style.display = 'block';
+            imagePreview.src = URL.createObjectURL(file);
+        } else {
+            imagePreview.style.display = 'none';
+            imagePreview.src = '#';
+        }
+    });
+</script>
+
+<style>
+    .avatar-upload-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50vh;
+    }
+
+    .avatar-upload-box {
+        border: 2px solid #ccc;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+    }
+</style>
+{% endblock contenido %}

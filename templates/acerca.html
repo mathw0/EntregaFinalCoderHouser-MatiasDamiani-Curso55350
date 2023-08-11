@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Bienvenidos a TECNOVERSO</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    </head>
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">TECNOVERSO</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/blog/inicio_blog/">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/acerca">About us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Header - set the background image for the header in the line below-->
+        <style>
+            .img-logo {
+                width: 350px;
+                height: 350px;
+                object-fit: contain;
+            }
+        </style>
+        <header>
+            <div class="text-center my-5">
+                <img class="img-fluid rounded-circle mb-4 img-logo" src="{% static 'imagenes/FotoMD.png' %}" alt="Logo" />
+            </div>
+        </header>
+        <!-- Content section-->
+        <section class="py-5">
+            <div class="container my-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <h2>Fundador</h2>
+                        <p class="lead">Matias Damiani</p>
+                        <p class="mb-0">Matías emerge en el misterioso universo de Tecnoverso, un lugar donde la tecnología, las finanzas y la maravilla del multiverso se entrelazan de maneras sorprendentes. Matías no solo es un profesional experimentado, sino un explorador audaz que navega entre las dimensiones, liderando con una pasión incansable por la innovación.
+                            En este vasto panorama de posibilidades infinitas, Matías no solo lidera equipos y optimiza procesos, sino que también forja nexos entre las esferas financieras y tecnológicas de diversos universos. Fundador de Tecnoverso, Matías trasciende los límites de la realidad, combinando su conocimiento en administración de empresas con su fascinación por las tendencias del futuro.
+                            Dentro de este entramado cósmico, Matías no solo enfrenta desafíos, sino que los abraza con creatividad. Su habilidad para resolver situaciones emergentes le ha valido el reconocimiento por su excepcional desempeño en el arte de descifrar enigmas financieros y abordar retos tecnológicos que rompen las barreras del espacio y el tiempo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+            </div>
+        </section>
+        <!-- Image element - set the background image for the header in the line below-->
+        <div class="py-5 bg-image-full" style="background-image: url('https://source.unsplash.com/4ulffa6qoKA/1200x800')">
+            <!-- Put anything you want here! The spacer below with inline CSS is just for demo purposes!-->
+            <div style="height: 20rem"></div>
+        </div>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; GlobalFinTechWave, Argentina 2023, created by Matias Damiani</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'js/scripts.js' %}"></script>
+    </body>
+</html>

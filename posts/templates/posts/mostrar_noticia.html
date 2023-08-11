@@ -1,0 +1,90 @@
+{% extends 'statics.html' %}
+
+{% block contenido %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">{{ noticia.titulo }}</h2>
+                    {% if noticia.imagen %}
+                        <img src="{{ noticia.imagen.url }}" class="img-fluid mb-3 img-smaller" alt="{{ noticia.titulo }}">
+                    {% endif %}
+                    <p class="card-text">{{ noticia.contenido }}</p>
+                    <p class="card-text text-muted">Creado por: {{ noticia.autor.username }}</p>
+                    <p class="card-text text-muted">{{ noticia.fecha_publicacion|date:"F d, Y" }}</p>
+                </div>
+            </div>
+            
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h5 class="card-title">Comentarios</h5>
+                    <hr>
+                    <div class="mb-3">
+                        {% for comentario in noticia.comentarios.all %}
+                            <div class="media mb-3">
+                                <img src="{{ comentario.autor.avatar.imagen.url }}" class="mr-3 rounded-circle" width="50" height="50" alt="Avatar">
+                                <div class="media-body">
+                                    <h6 class="mt-0">{{ comentario.autor.username }}</h6>
+                                    <p>{{ comentario.texto }}</p>
+                                    <p class="small text-muted">{{ comentario.fecha|date:"F d, Y" }}</p>
+                                </div>
+                            </div>
+                            <hr>
+                        {% empty %}
+                            <p>No hay comentarios aún.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h5 class="card-title">Agregar Comentario</h5>
+                    <form id="comentario-form" method="post" data-action="{% url 'agregar_comentario' noticia.id %}">
+                        {% csrf_token %}
+                        {{ comentario_form.as_p }}
+                        <button type="submit" class="btn btn-primary">Agregar Comentario</button>
+                    </form>
+                </div>  
+                <style>
+                    #comentario-form textarea {
+                        width: 100%;
+                        height: 100px;
+                        resize: vertical;
+                    }
+                </style>
+            {% if request.user == noticia.autor %}
+                <a href="{% url 'editar_noticia' noticia.id %}" class="btn btn-secondary mt-3">Editar Noticia</a>
+            {% endif %}
+            
+        </div>
+    </div>
+</div>
+
+<style>
+    .img-smaller {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .card {
+        border: none;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-title {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .card-text {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .text-muted {
+        font-size: 14px;
+    }
+</style>
+{% endblock contenido %}

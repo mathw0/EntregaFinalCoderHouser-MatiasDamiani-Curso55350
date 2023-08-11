@@ -1,0 +1,64 @@
+{% extends 'statics.html' %}
+{% load static %}
+{% block contenido %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h2 class="mb-4">Crear Noticia</h2>
+            <form method="post" enctype="multipart/form-data" class="my-form">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="{{ form.titulo.id_for_label }}" class="form-label">Título:</label>
+                    {{ form.titulo }}
+                </div>
+                <div class="mb-3">
+                    <label for="{{ form.contenido.id_for_label }}" class="form-label">Contenido:</label>
+                    {{ form.contenido }}
+                </div>
+                <div class="mb-3">
+                    <label for="{{ form.imagen.id_for_label }}" class="form-label">Imagen:</label>
+                    {{ form.imagen }}
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg">Publicar Noticia</button>
+                <p>Recuerda que las noticias serán revisadas por el administador del sitio y prodrá borrar tus noticias sin previo aviso, en caso de considerar falta de coherencia o ir encontra de las normas del sitio.</p>
+            </form>
+        </div>
+    </div>
+</div>
+<style>
+    .my-form {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .my-form .form-label {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .my-form input[type="text"],
+    .my-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+    }
+
+    .my-form .btn-primary {
+        background-color: #007bff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+        color: #fff;
+    }
+
+    .my-form .btn-primary:hover {
+        background-color: #0056b3;
+    }
+</style>
+{% endblock contenido %}

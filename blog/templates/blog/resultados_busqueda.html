@@ -1,0 +1,40 @@
+{% extends 'statics.html' %}
+{% load static %}
+{% block contenido %}
+<div class="container">
+    <div class="row">
+        <!-- Blog entries -->
+        <div class="col-lg-8">
+            <h2>Search Results for "{{ query }}"</h2>
+            <hr>
+            {% if noticias %}
+                <ul class="list-group">
+                    {% for noticia in noticias %}
+                        <li class="list-group-item">
+                            <h3><a href="{% url 'mostrar_noticia' noticia.id %}">{{ noticia.titulo }}</a></h3>
+                            <p>{{ noticia.contenido|truncatewords:30 }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No results found.</p>
+            {% endif %}
+        </div>
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-header">Buscador de noticias</div>
+                <div class="card-body">
+                    <form action="{% url 'buscar_noticias' %}" method="get">
+                        <div class="input-group">
+                            <input class="form-control" type="text" placeholder="Buscar noticias..." aria-label="Buscar noticias..." aria-describedby="button-search" name="q">
+                            <button class="btn btn-primary" id="button-search" type="submit">Buscar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+{% endblock contenido %}
+</html>

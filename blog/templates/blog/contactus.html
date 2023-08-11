@@ -1,0 +1,53 @@
+{% extends 'statics.html' %}
+{% load static %}
+{% block contenido %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h1 class="display-4">Consulta</h1>
+            <p class="lead">
+                Dado que nuestro espacio se nutre del compromiso de nuestros colaboradores, hemos reservado este espacio para que puedas plantear tus consultas a los administradores del sitio. Tu opinión y preguntas son de gran valor para nosotros.</p>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-8 mx-auto">
+            <h2 class="mb-3">Realiza tu consulta</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                </div>
+                <div class="mb-3">
+                    <label for="apellido" class="form-label">Apellido:</label>
+                    <input type="text" class="form-control" id="apellido" name="apellido" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Teléfono:</label>
+                    <input type="text" class="form-control" id="telefono" name="telefono">
+                </div>
+                <div class="mb-3">
+                    <label for="consulta" class="form-label">Consulta:</label>
+                    <textarea class="form-control" id="consulta" name="consulta" rows="5" maxlength="400" placeholder="Realiza tu consulta. Máximo 400 caracteres." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar consulta</button>
+            </form>
+            {% if error_message %}
+                <div class="alert alert-danger mt-3">{{ error_message }}</div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-8 mx-auto text-center">
+            <p class="mb-2">Su consulta será enviada a los administradores del sitio.</p>
+            <p>Nos pondrémos en contacto contigo, la demora en al respuesta puede varias según el volumen de consultas registradas.</p>
+        </div>
+    </div>
+</div>
+
+{% endblock contenido %}

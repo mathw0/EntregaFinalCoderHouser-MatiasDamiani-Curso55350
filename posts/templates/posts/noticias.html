@@ -1,0 +1,33 @@
+{% extends 'statics.html' %}
+
+{% block contenido %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-right mb-4">
+            <a href="{% url 'crear_noticia' %}" class="btn btn-primary">Crear Noticia</a>
+        </div>
+    </div>
+    
+    <h2>Noticias</h2>
+    <div class="row">
+        {% for noticia in noticias %}
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                {% if noticia.imagen %}
+                    <img src="{{ noticia.imagen.url }}" class="card-img-top" alt="{{ noticia.titulo }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'mostrar_noticia' noticia.id %}">{{ noticia.titulo }}</a></h5>
+                    <p class="card-text">Creado por: {{ noticia.autor.username }}</p>
+                    <p class="card-text"><small class="text-muted">{{ noticia.fecha_publicacion|date:"F d, Y" }}</small></p>
+                    {% if request.user == noticia.autor %}
+                        <a href="{% url 'editar_noticia' noticia.id %}" class="btn btn-secondary">Editar</a>
+                    {% endif %}
+                </div>
+            </div>
+                        
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock contenido %}
